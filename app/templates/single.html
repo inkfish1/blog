@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+	{% block content%}
+			
+			<!-- posts list -->
+			<div id="posts-list" class="cf"> 
+			
+				<article class="cf">
+					<div class="feature-image">
+						<a><img src="data:;base64,{{article.coverpic.decode('utf-8')}}" alt="Thumbnail" style="width:580px;height:370px;" /></a>
+					</div>
+					<div class="entry-title">
+						<a " class="post-heading">{{article.title}}</a>
+						<div class="entry-date">{{article.timestamp.strftime('%Y-%m-%d %H:%M')}}</div>
+						<a href="{{url_for('main.revise',id=article.id)}}" class="comments">修改</a>
+					</div>
+					<div class="excerpt entry-content" id='article_body'>
+						{{article.body |safe}}
+						
+					</div>	
+				</article>
+	
+						
+		    </div>
+			<!-- ENDS posts list -->			
+			
+			
+			{% include '_child.html'%}
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		
+	{% endblock %}

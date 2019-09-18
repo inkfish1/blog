@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+	{% block content%}
+			
+			<!-- page-content -->
+			<div class="page-content">
+			
+				<!-- entry-content -->	
+	        	<div class="entry-content cf">
+					<h2 class="heading">CONTACT US</h2>
+					<div id="map"></div>
+				
+					<p>
+						<strong>Address Info</strong><br />
+						Caguama 1221 Julian Pinero 44321, Ontario Canada<br />
+						<strong>Telephone</strong><br />
+						(333) 1276543, (333) 354128<br />
+					</p>
+					
+					<h3>Get in touch using this form</h3>
+					<!-- form -->
+					<form id="contactForm" action="#" method="post" />
+						<fieldset>
+															
+							<p>
+								<label for="name">Name</label>
+								<input name="name" id="name" type="text" class="form-poshytip" title="Enter your full name" />
+							</p>
+							
+							<p>
+								<label for="email">Email</label>
+								<input name="email" id="email" type="text" class="form-poshytip" title="Enter your email address" />
+							</p>
+							
+							<p>
+								<label for="web">Website</label>
+								<input name="web" id="web" type="text" class="form-poshytip" title="Enter your website" />
+							</p>
+							
+							<p>
+								<label for="comments">Message</label>
+								<textarea name="comments" id="comments" rows="5" cols="20" class="form-poshytip" title="Enter your comments"></textarea>
+							</p>
+							
+							<!-- send mail configuration -->
+							<input type="hidden" value="your@email.com" name="to" id="to" />
+							<input type="hidden" value="ENter the subject here" name="subject" id="subject" />
+							<input type="hidden" value="send-mail.php" name="sendMailUrl" id="sendMailUrl" />
+							<!-- ENDS send mail configuration -->
+							
+							<p><input type="button" value="Send" name="submit" id="submit" /> <span id="error" class="warning">Message</span></p>
+						</fieldset>
+						
+					</form>
+					<p id="sent-form-msg" class="success">Form data sent. Thanks for your comments.</p>
+					<!-- ENDS form -->
+			
+					</div><!-- ENDS entry-content -->
+			</div><!-- ENDS page-content -->
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		
+			
+			
+		{% endblock %}

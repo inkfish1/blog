@@ -1,0 +1,12 @@
+#index_img{
+    height: 340px;
+    widows: 310 px;
+}
+#index_body{
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+    height:70px;
+}

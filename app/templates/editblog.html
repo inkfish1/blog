@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+	{% block content%}
+			
+			<!-- page-content -->
+		<div class="page-content">
+			
+				<!-- entry-content -->	
+	        <div class="entry-content cf">
+				<h2 class="heading">博客编写</h2>
+				<!-- form -->
+                <form id="contactForm" action="" method="POST" enctype="multipart/form-data"/>
+                    {{form.hidden_tag()}}
+						<fieldset>								
+							<p>
+                                {{form.title(size=32)}}
+							</p>
+							<p>
+								<!-- <textarea id='mytextarea'>输入内容</textarea> -->
+								{{form.body(id='mytextarea')}}
+
+							</p>
+							<hr>
+							<p style="margin-top: 20px;"> {{form.category.label}}: </p>
+							<p>
+								{{form.category(class='articletype')}}
+								
+							</p>
+							<div style='clear:both;'></div>
+							<hr>
+							<p style="margin-top: 20px;"> {{form.keyword.label}}: </p>
+							<p>
+								{{form.keyword}}
+							</p>
+							<hr>
+							<p style="margin-top: 20px;"> {{form.coverpic.label}}: </p>
+							<p>
+								{{form.coverpic}}
+							</p>
+							<hr>
+							<p>{{form.submit()}} <span id="error" class="warning">Message</span></p>
+						</fieldset>
+				</form>
+				<p id="sent-form-msg" class="success">Form data sent. Thanks for your comments.</p>
+					<!-- ENDS form -->
+			</div>
+					<!-- ENDS entry-content -->
+		</div>		
+	{% endblock %}

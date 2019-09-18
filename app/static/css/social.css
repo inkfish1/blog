@@ -1,0 +1,45 @@
+/* Vars ----------------------------------------------------*//* Mixins ----------------------------------------------------*/#social-bar {
+  display: block;
+  clear: left;
+  float: left;
+  position: relative;
+  margin-top: 10px;
+}
+#social-bar li {
+  display: block;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#social-bar li a {
+  position: absolute;
+  height: 64px;
+  width: 32px;
+  top: 0;
+  left: 0px;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+}
+#social-bar li a:hover {
+  top: -32px;
+}
+#social-bar .qq a {
+  background-image: url('../img/social/qq.png');
+}
+#social-bar .weixin a {
+  background-image: url('../img/social/weixin.png');
+}
+#social-bar .weibo a {
+  background-image: url('../img/social/weibo.png');
+}
+#social-bar .github a {
+  background-image: url('../img/social/github.png');
+}

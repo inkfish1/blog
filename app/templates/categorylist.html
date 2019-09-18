@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+	{% block content %}	
+			<!-- posts list -->
+			<div id="posts-list" class="cf"> 
+			   <ul class="work-list cf" id="filter-container">
+			{% for post in posts%}
+				<li>
+					<a href="{{url_for('main.single',id=post.id)}}" class="thumb">
+						<img src="data:;base64,{{post.coverpic.decode('utf-8')}}" alt="Thumbnail" />
+						<div class="img-overlay">更多</div>
+					</a>
+					<a href="{{url_for('main.single',id=post.id)}}" class="title">{{post.title}}</a>
+					
+					<div class="excerpt"><div class="categories">摘要：{{post.keyword}}</div></div>
+				</li>
+
+			{% endfor %}			
+		
+			    </ul> 			
+		    </div>
+			<!-- ENDS posts list -->			
+			
+			
+			{% include '_child.html'%}
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		
+		{% endblock %}
+			

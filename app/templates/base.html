@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<title>inkfish</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}" />
+		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+		<link rel="stylesheet" href="{{url_for('static',filename='css/nivo-slider.css')}}" />
+		<link rel="stylesheet" media="all" href="{{url_for('static',filename='css/responsive.css')}}" />
+        <!--为文章类型设置格式-->
+        <link rel="stylesheet" href="{{url_for('static',filename='blog/css/editblog.css')}}"/>
+        <!-- end设置 -->
+        <link rel="stylesheet" href="{{url_for('static',filename='blog/css/index.css')}}" />
+		<script src="{{url_for('static',filename='js/modernizr-2.6.1.min.js')}}"></script>
+		
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<body>
+		
+		
+		
+		
+		<!-- TOP -->
+		<div id="top-page" class="cf">
+			
+			<!-- 搜索框 -->
+			<form method="get" id="searchform" action="#" class="cf" />
+				<input type="submit" id="searchsubmit" value=" " />
+				<input type="text" value="" name="s" id="s" placeholder="Search" />
+			</form>
+			<!-- ENDS 搜索框 -->
+			<!-- Social bar -->
+			<ul id="social-bar" class="cf">
+				<!-- 登录 -->
+                {%if sessions['name']%}
+                <img src="{{sessions['headimg']}}" style="border-radius:30px; height:30px;width:30px" >&nbsp;&nbsp{{sessions['name']}}&nbsp;&nbsp;<a href="{{url_for('login.logout')}}">退出</a>
+                {% else %}
+                <li class="qq"><a href="#" title="qq"></a></li>
+				<li class="weixin"><a href="" title="weixin"></a></li>
+				<li class="weibo"><a href="{{url_for('login.weibo_login')}}" title="weibo"></a></li>
+                <li class="github"><a href="{{url_for('login.github_login')}}" title="github"></a></li>
+                {% endif %}
+			</ul>
+			<!-- ENDS Social bar -->
+			
+		</div>
+		<!-- ENDS TOP -->
+			
+		
+		<!-- HEADER -->
+		<header class="cf">
+			
+			<!-- nav -->
+			<nav class="cf">
+			
+				<!-- left nav -->
+				<ul id="left-nav" class="sf-menu">
+					<li {%if barselect=='page' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.page')}}">特色</a>
+					</li>
+					<li {%if barselect=='blog' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.blog')}}">博客</a></li>
+					<li {%if barselect=='index' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.index')}}">首页</a></li>
+				</ul>
+				<!-- ends left nav -->
+				
+				<!-- right nav -->
+				<ul id="right-nav" class="sf-menu">
+					<li {%if barselect=='work' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.work')}}">工作</a></li>
+					<li {%if barselect=='contact' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.contact')}}">联系</a></li>
+					<li {%if barselect=='editblog' %}class="current-menu-item" {% endif %}><a href="{{url_for('main.editblog')}}">编写</a></li>
+				</ul>
+				<!-- ENDS right nav -->
+				
+			</nav>
+			<!-- nav -->
+			
+			<!-- logo -->
+			<div id="logo">
+				<a href="{{url_for('main.index')}}"><img src="{{url_for('static',filename='img/logo.png')}}" alt="" /></a>
+			</div>
+			<!-- ENDS logo -->
+			
+			
+		</header>
+		<!-- ENDS HEADER -->
+		
+		
+		<!-- MAIN -->
+		<div id="main" role="main" class="cf">
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!-- widgets -->
+		<div class="widget-holder">
+                <div class="left-fold"></div>
+                <div class="right-fold"></div>
+                <ul class="widget-cols cf">
+                    <li class="first-col">
+                        
+                        <div class="widget-block" id='tiezi'>
+                            <h4>最近的帖子</h4>
+                           
+                        </div>
+                    </li>
+                    
+                    <li class="second-col">
+                        
+                        <div class="widget-block">
+                            <h4>公告</h4>
+                            <p>本博客现在只支持微博和github登录，其他方式在开发中</a></p>
+                            <p>浏览 <a href="">其他博客</a> 去发现更多有趣有知识的博客。</p>
+                        </div>
+                        
+                    </li>
+                    
+                    <li class="third-col">
+                        
+                        <div class="widget-block">
+                            <h4>联系博主方式</h4>
+                            <p>QQ ，微信 </p>
+                         </div>
+                         
+                    </li>
+                    
+                    <li class="fourth-col">
+                        
+                        <div class="widget-block">
+                            <h4>常见类别</h4>
+                            <ul id='kind'>
+                                
+                            </ul>
+                        </div>
+                         
+                    </li>	
+                </ul>
+            </div>
+            <!-- ENDS widgets -->
+                
+                
+            <!-- FOOTER -->
+            <footer class="cf">
+                <div id="bottom-left">
+                    <script src="{{url_for('static',filename='js/chirp.min.js')}}"></script>
+                    <script>Chirp({user:'ansimuz',max:1})</script></div>
+                <div id="bottom-right">blog by <a href="#">inkfish</a> </div>
+            </footer>
+            <!-- ENDS FOOTER -->
+            
+            <!-- JavaScript at the bottom for fast page loading -->
+            <script src="{{url_for('static',filename='js/jquery-1.8.0.min.js')}}"></script>
+            <!-- 博客编写插件 -->
+            <script src="{{url_for('static',filename='js/tinymce/tinymce.min.js')}}"></script>
+            <script src="{{url_for('static',filename='blog/js/tinymce_stemp.js')}}"></script>
+            <!-- end博客编写插件 -->
+
+            <!--ajax实现得到最近三个博客-->
+            <script >
+                $("document").ready(function(){
+                    $.ajax({
+                        url:"{{ url_for('main.getrecent') }}",
+                        cache:false,
+                        processData:false,
+                        contentType:false,
+                        type:'POST',
+                        success:function (data) {
+                            if(data.signal==1){
+                                $.each(data.posts,function(i,item){
+                                id =item['id']
+                                var addhtml=' <div class="recent-post cf"><a href="/single/?id='+id+'" class="thumb"><img src="data:;base64,'+item['pic']+'" alt="Post" style="height:60px;width:60px" /></a><div class="post-head"><a href="/single/?id='+id+'">'+item['title']+'</a><span class="date">'+item['timestamp']+'</span></div></div>'
+                                $('#tiezi').append(addhtml)
+                                }); 
+                            }
+
+                        }
+                    })
+                })
+                            
+            </script>
+            <!-- end博客 -->
+
+            <!-- 常见类别实现 -->
+            <script > 
+            $("document").ready(function(){
+                        $.ajax({
+                            url:"{{ url_for('main.getcategory') }}",
+                            cache:false,
+                            processData:false,
+                            contentType:false,
+                            type:'POST',
+                            success:function (data) {
+                                if(data.signal==1){
+                                $.each(data.category,function(i,item){
+                                var addhtml='<li class="cat-item"><a href="/categorylist/?id='+item['id']+'">'+item['name']+'('+item['length']+')'+'</a></li>'
+                                $('#kind').append(addhtml)
+                                });
+                                
+                                }
+
+                            }
+                        })
+                    })
+                                
+            </script>
+            <!-- end类别 -->
+            <!--获取每日一句-->
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+            <script src="{{url_for('static',filename='blog/js/sentence.js')}}"></script>             
+            <!--end每日一句-->
+
+            <!--获取当地天气-->
+            <script  src="{{url_for('static',filename='blog/js/weather.js')}}"></script>
+            <!--end当地天气-->
+    
+
+            <!-- superfish -->
+            <script src="{{url_for('static',filename='js/superfish-1.4.8/js/hoverIntent.js"')}}></script>
+            <script src="{{url_for('static',filename='js/superfish-1.4.8/js/superfish.js')}}"></script>
+            <script src="{{url_for('static',filename='js/superfish-1.4.8/js/supersubs.js')}}"></script>
+            <!-- ENDS superfish -->
+            <script src="{{url_for('static',filename='js/jquery.nivo.slider.js')}}"></script>
+            <script src="{{url_for('static',filename='js/tabs.js')}}"></script>
+            <script src="{{url_for('static',filename='js/css3-mediaqueries.js')}}"></script>
+            <script src="{{url_for('static',filename='js/jquery.isotope.min.js')}}"></script>
+            <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+            <!-- ENDS javascripts -->
+        
+        </body>
+    </html>

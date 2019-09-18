@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+	{% block content %}
+			
+			<!-- categories -->
+			<ul class="nav-categories cf">
+				<li class="current"><a href="#">全部</a></li>
+				
+			</ul>
+			<!-- ENDS categories -->
+			
+			<!-- featured -->
+			
+			<ul class="work-list cf" id="filter-container">
+			{% for post in posts.items %}
+				<li>
+					<a href="{{url_for('main.single',id=post.id)}}" class="thumb">
+						<img src="data:;base64,{{post.coverpic.decode('utf-8')}}" alt="Thumbnail" style="height:350px;width:300px;"/>
+						<div class="img-overlay">更多</div>
+					</a>
+					<a href="{{url_for('main.single',id=post.id)}}" class="title">{{post.title}}</a>
+					
+					<div class="excerpt"><div class="categories">摘要：{{post.keyword}}</div></div>
+				</li>
+			{% endfor %}		
+			</ul>
+			<!-- ENDS featured -->
+			
+			<!-- pager -->
+			<ul class="pager cf">
+			<li class="paged">Page 1 of {{posts.pages}} </li>
+			{% for i in posts.iter_pages()%}
+				<li {% if posts.page==i %} class="active"{% endif %}><a href="{{url_for('main.blog',page=i)}}"  >{{i}}</a></li>
+			{% endfor %}
+			</ul> 
+			<!-- ENDS pager -->
+			
+		</div>
+		<!-- ENDS MAIN -->
+		
+			
+			
+	{% endblock %}

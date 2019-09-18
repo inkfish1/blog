@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+	{% block content%}	
+			<!-- SLIDER -->
+			<div class="slider-wrapper theme-default">
+	            <div id="slider" class="nivoSlider">
+	                <img src="{{url_for('static',filename='img/dummies/slides/01.jpg')}}" alt="" />
+	                <img src="{{url_for('static',filename='img/dummies/slides/02.jpg')}}" alt="" />
+	                <img src="{{url_for('static',filename='img/dummies/slides/03.jpg')}}" alt="" />
+	            </div>
+	        </div>
+			<!-- ENDS SLIDER -->
+			
+			<!-- tagline -->
+			<div class="tagline">博客推荐</div>
+			<!-- ENDS tagline -->
+			
+			<!-- featured -->
+			<ul class="feature cf">
+				{% for post in data%}
+				<li>
+					<a href="{{url_for('main.single',id=post.id)}}" class="thumb">
+						<img src="data:;base64,{{post.coverpic.decode('utf-8')}}" alt="Thumbnail" id='index_img'/>
+						<div class="img-overlay">更多</div>
+					</a>
+					<a href="{{url_for('main.single',id=post.id)}}" class="title" style="font-size: 30px;">{{post.title}}</a>
+					<div class="categories">摘要：{{post.keyword}}</div>
+					<div class="excerpt"  id='index_body'>{{post.body|safe}}</div>
+					<a href="{{url_for('main.single',id=post.id)}}" class="action-button">更多</a>
+				</li>
+				{% endfor %}
+			</ul>
+			<!-- ENDS featured -->
+			
+		
+		
+	{% endblock %}
+			
+			
+		
